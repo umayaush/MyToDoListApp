@@ -17,10 +17,25 @@ function App() {
     ['Do laundry', 'Go to gym', 'Walk dog']
   );
 
+  const addTask = (taskText) => {
+    // Check for empty input
+    if (taskText.trim() == '') {
+      return;
+    }
+
+    // Check for duplicates (case-insensitive)
+    const lowerCaseTasks = tasks.map(task => task.toLowerCase());
+    if (lowerCaseTasks.includes(taskText.toLowerCase())) {
+      return;
+    }
+
+    setTasks([...tasks, taskText])
+  };
+
   return (
     <SafeAreaView>
-      <ToDoList task={tasks}/>
-      <ToDoForm/>
+      <ToDoList tasks={tasks}/>
+      <ToDoForm addTask={addTask}/>
     </SafeAreaView>
   );
 }
