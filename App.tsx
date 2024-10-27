@@ -29,6 +29,7 @@ function App() {
       return;
     }
 
+    // Add new task
     setTasks([...tasks, taskText])
   };
 
